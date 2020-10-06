@@ -3,12 +3,13 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv/config')
 
 const app = express();
 
 
 
-mongoose.connect('mongodb+srv://saugatmalla:s1u7a200@cluster0.dynyf.mongodb.net/gql-name?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_MONGO,
     { useNewUrlParser: true, useUnifiedTopology: true })
 
 mongoose.connection.once('open', () => {
